@@ -1,6 +1,7 @@
 const express = require("express");
-const app = express();
+const livereload = require("livereload");
 const path = require("path");
+const app = express();
 const morgan = require("morgan");
 const port = 3000;
 const mysql2 = require("mysql2");
@@ -23,7 +24,6 @@ app.listen(port, () => {
 	console.log(`	🔔 Server    = ✅ ON PORT ${port} 💡`);	
 });
 
-
 // Middlewares
 
 app.use(express.urlencoded({extended: false}));
@@ -32,15 +32,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(require('./routes/index'));
 
 // Static
-app.use(express.static(path.join(__dirname, 'public')));
-
-// 404 Handler
-/*
-app.use((req, res, next) => {
-	res.status(404).send('404 No he encontre ni mierda');
-});
-*/
-
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // MYSQL Connection to DB
 //
@@ -61,8 +53,4 @@ connection.connect((err) => {
 });
 
 
-app.get('/logeados', (req, res) => {
-	res.send("me mie, pero en logeados 🍔");
-});
-
-
+module.exports = app;
