@@ -31,9 +31,6 @@ app.use(express.urlencoded({extended: false}));
 // Routes
 app.use(require('./routes/index'));
 
-// Static
-// app.use(express.static(path.join(__dirname, 'public')));
-
 // MYSQL Connection to DB
 //
  const connection = mysql2.createConnection({
