@@ -26,10 +26,14 @@ app.listen(port, () => {
 
 // Middlewares
 
-app.use(express.urlencoded({extended: false}));
+// app.use(express.urlencoded({extended: false}));
+
+// Admitir
+app.use(express.json())
 
 // Routes
-app.use(require('./routes/index'));
+app.use('/api', require('./routes/index'));
+
 
 // MYSQL Connection to DB
 //
